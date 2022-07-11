@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "trIhwIZt3T6PwymaCI8jytB2uRzOPjj2/HyLNst/QVL7uTpz2XmsHzav9rpJ1uOvmZ3+xP7RtabQ7riBF7O78g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aziz\\Desktop\\Angular Projects\\skinet-ecommerce-shop\\API\\API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aziz\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\aziz\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\aziz\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\aziz\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\aziz\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\aziz\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}

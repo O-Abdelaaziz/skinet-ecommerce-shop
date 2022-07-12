@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,8 +31,9 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             string mySqlConnectionStr = _configuration.GetConnectionString("DefaultConnection");
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddControllers();
-            services.AddDbContext<StoreContext>(x=>x.UseMySQL(mySqlConnectionStr));
+            services.AddDbContext<StoreContext>(x => x.UseMySQL(mySqlConnectionStr));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });

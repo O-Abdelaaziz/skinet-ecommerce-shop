@@ -4,10 +4,14 @@
 /dist
 /tmp
 /out-tsc
-/obj
-/bin
 # Only exists if Bazel was run
 /bazel-out
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
 
 # dependencies
 /node_modules

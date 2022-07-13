@@ -32,7 +32,7 @@ namespace Infrastructure.Data
             return await ApplySpecefication(specefication).FirstOrDefaultAsync();
         }
 
-        public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> specefication)
+        public async Task<IReadOnlyList<T>> ListAllEntitiesWithSpecificationAsync(ISpecification<T> specefication)
         {
             return await ApplySpecefication(specefication).ToListAsync();
         }

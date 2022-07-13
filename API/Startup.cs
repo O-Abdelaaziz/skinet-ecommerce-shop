@@ -32,6 +32,7 @@ namespace API
         {
             string mySqlConnectionStr = _configuration.GetConnectionString("DefaultConnection");
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             services.AddControllers();
             services.AddDbContext<StoreContext>(x => x.UseMySQL(mySqlConnectionStr));
             services.AddSwaggerGen(c =>

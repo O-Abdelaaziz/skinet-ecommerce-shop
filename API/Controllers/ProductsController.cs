@@ -5,7 +5,6 @@ using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
 using API.Dtos;
-using System.Linq;
 using AutoMapper;
 using API.Errors;
 using System.Net;

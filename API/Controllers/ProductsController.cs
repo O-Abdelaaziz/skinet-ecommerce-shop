@@ -6,6 +6,7 @@ using Core.Interfaces;
 using Core.Specifications;
 using API.Dtos;
 using System.Linq;
+using AutoMapper;
 
 namespace API.Controllers
 {
@@ -16,16 +17,19 @@ namespace API.Controllers
         private readonly IGenericRepository<Product> _productRepository;
         private readonly IGenericRepository<ProductBrand> _productBrandRepository;
         private readonly IGenericRepository<ProductType> _productTypeRepository;
+        public readonly IMapper _imapper;
 
         public ProductsController(
             IGenericRepository<Product> productRepository,
             IGenericRepository<ProductBrand> productBrandRepository,
-            IGenericRepository<ProductType> productTypeRepository
+            IGenericRepository<ProductType> productTypeRepository,
+            IMapper imapper
             )
         {
             this._productRepository = productRepository;
             this._productBrandRepository = productBrandRepository;
             this._productTypeRepository = productTypeRepository;
+            this._imapper = imapper;
         }
 
         [HttpGet]
@@ -51,16 +55,7 @@ namespace API.Controllers
             var specification = new ProductsWithBrandsAndTypesSpecification(id);
             var product = await this._productRepository.GetEntityWithSpecification(specification);
 
-            return Ok(new ProductToReturnDto
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Description = product.Description,
-                Price = product.Price,
-                PictureUrl = product.PictureUrl,
-                ProductBrand = product.ProductBrand.Name,
-                ProductType = product.ProductType.Name
-            });
+            return Ok(this._imapper.Map<Product, ProductToReturnDto>(product));
         }
 
         [HttpGet("brands")]

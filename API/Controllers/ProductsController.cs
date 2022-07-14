@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
+using API.Dtos;
+using System.Linq;
 
 namespace API.Controllers
 {
@@ -27,19 +29,38 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProducts()
+        public async Task<ActionResult<List<ProductToReturnDto>>> GetProducts()
         {
             var specification = new ProductsWithBrandsAndTypesSpecification();
             var products = await this._productRepository.ListAllEntitiesWithSpecificationAsync(specification);
-            return Ok(products);
+            return Ok(products.Select(product => new ProductToReturnDto
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                PictureUrl = product.PictureUrl,
+                ProductBrand = product.ProductBrand.Name,
+                ProductType = product.ProductType.Name
+            }).ToList());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<ProductToReturnDto>> GetProduct(int id)
         {
             var specification = new ProductsWithBrandsAndTypesSpecification(id);
             var product = await this._productRepository.GetEntityWithSpecification(specification);
-            return Ok(product);
+
+            return Ok(new ProductToReturnDto
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                PictureUrl = product.PictureUrl,
+                ProductBrand = product.ProductBrand.Name,
+                ProductType = product.ProductType.Name
+            });
         }
 
         [HttpGet("brands")]

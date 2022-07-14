@@ -1,9 +1,7 @@
-﻿using Infrastructure.Data;
+﻿using API.Errors;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
 
 namespace API.Controllers
 {
@@ -24,7 +22,8 @@ namespace API.Controllers
             {
                 return Ok(product);
             }
-            return NotFound("no Product found with provided id: " + 50);
+
+            return NotFound(new ApiResponse(404, HttpStatusCode.NotFound.ToString()));
         }
 
         [HttpGet("server-error")]
@@ -33,13 +32,13 @@ namespace API.Controllers
             var product = this._storeContext.Products.Find(50); // this is null
             var productToString = product.ToString(); // this make server error bcs product is null
 
-            return Ok();
+            return Ok(new ApiResponse(500, HttpStatusCode.InternalServerError.ToString()));
         }
 
         [HttpGet("bad-request")]
         public ActionResult GetBadRequest()
         {
-            return BadRequest();
+            return BadRequest(new ApiResponse(400, HttpStatusCode.BadRequest.ToString()));
         }
 
         [HttpGet("bad-request/{id}")]

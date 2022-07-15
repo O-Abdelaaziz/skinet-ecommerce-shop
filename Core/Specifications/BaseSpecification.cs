@@ -28,6 +28,14 @@ namespace Core.Specifications
 
         public Expression<Func<T, object>> OrderByDescending { get; private set; }
 
+        Expression<Func<T, bool>> ISpecification<T>.Criteria => throw new NotImplementedException();
+
+        List<Expression<Func<T, object>>> ISpecification<T>.Includes => throw new NotImplementedException();
+
+        Expression<Func<T, object>> ISpecification<T>.OrderBy => throw new NotImplementedException();
+
+        Expression<Func<T, object>> ISpecification<T>.OrderByDescending => throw new NotImplementedException();
+
         protected void AddOrderBy(Expression<Func<T, object>> orderByExpression)
         {
             OrderBy = orderByExpression;
@@ -36,6 +44,20 @@ namespace Core.Specifications
         protected void AddOrderByDescending(Expression<Func<T, object>> orderByDescendingExpression)
         {
             OrderByDescending = orderByDescendingExpression;
+        }
+
+        public int Take { get; private set; }
+
+        public int Skip { get; private set; }
+
+        public bool IsPagingEnable { get; private set; }
+
+
+        protected void ApplyPaging(int skip, int take)
+        {
+            Skip = skip;
+            Take = take;
+            IsPagingEnable = true;
         }
     }
 

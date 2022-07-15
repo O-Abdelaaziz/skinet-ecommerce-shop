@@ -28,14 +28,6 @@ namespace Core.Specifications
 
         public Expression<Func<T, object>> OrderByDescending { get; private set; }
 
-        Expression<Func<T, bool>> ISpecification<T>.Criteria => throw new NotImplementedException();
-
-        List<Expression<Func<T, object>>> ISpecification<T>.Includes => throw new NotImplementedException();
-
-        Expression<Func<T, object>> ISpecification<T>.OrderBy => throw new NotImplementedException();
-
-        Expression<Func<T, object>> ISpecification<T>.OrderByDescending => throw new NotImplementedException();
-
         protected void AddOrderBy(Expression<Func<T, object>> orderByExpression)
         {
             OrderBy = orderByExpression;

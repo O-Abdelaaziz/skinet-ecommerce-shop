@@ -8,9 +8,9 @@ import {Component, Input, OnInit} from '@angular/core';
 export class PagingHeaderComponent implements OnInit {
 
   @Input()
-  public pageNumber: number = 1;
+  public pageNumber: number = 0;
   @Input()
-  public pageSize: number = 6;
+  public pageSize: number = 0;
   @Input()
   public totalCount: number = 0;
 

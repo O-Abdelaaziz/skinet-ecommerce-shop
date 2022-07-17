@@ -5,6 +5,7 @@ import {IPagination} from "../../shared/models/pagination";
 import {Observable} from "rxjs";
 import {IBrand} from "../../shared/models/brand";
 import {IType} from "../../shared/models/type";
+import {ShopParams} from "../../shared/models/ShopParams";
 
 @Injectable({
   providedIn: 'root'
@@ -15,19 +16,19 @@ export class ShopService {
   constructor(private _httpClient: HttpClient) {
   }
 
-  getProductsList(brandId?: number, typeId?: number, sort?: string): Observable<IPagination> {
+  getProductsList(shopParams: ShopParams): Observable<IPagination> {
     let params = new HttpParams();
 
-    if (brandId) {
-      params = params.append("brandId", brandId.toString());
+    if (shopParams.brandId) {
+      params = params.append("brandId", shopParams.brandId.toString());
     }
 
-    if (typeId) {
-      params = params.append("typeId", typeId.toString());
+    if (shopParams.typeId) {
+      params = params.append("typeId", shopParams.typeId.toString());
     }
 
-    if (sort) {
-      params = params.append("sort", sort.toString());
+    if (shopParams.sort) {
+      params = params.append("sort", shopParams.sort.toString());
     }
 
     return this._httpClient.get<IPagination>(`${this.baseUrl}/products`, {params});

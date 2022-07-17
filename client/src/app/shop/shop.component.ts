@@ -3,6 +3,7 @@ import {ShopService} from "./services/shop.service";
 import {IProduct} from "../shared/models/product";
 import {IBrand} from "../shared/models/brand";
 import {IType} from "../shared/models/type";
+import {ShopParams} from "../shared/models/ShopParams";
 
 @Component({
   selector: 'app-shop',
@@ -13,9 +14,8 @@ export class ShopComponent implements OnInit {
   public products: IProduct[] = [];
   public brands: IBrand[] = [];
   public types: IType[] = [];
-  public selectedBrandId: number = 0;
-  public selectedTypeId: number = 0;
-  public selectedProperty: string = 'name';
+  public shopParams: ShopParams = new ShopParams();
+  public totalCount: number = 0;
   public sortOptions = [
     {name: 'Alphabetical', value: 'name'},
     {name: 'Price Low to High', value: 'priceAsc'},
@@ -33,10 +33,12 @@ export class ShopComponent implements OnInit {
   }
 
   public getProducts() {
-    this._shopService.getProductsList(this.selectedBrandId, this.selectedTypeId, this.selectedProperty).subscribe(
+    this._shopService.getProductsList(this.shopParams).subscribe(
       response => {
         this.products = response.data;
-        console.log(this.products)
+        this.shopParams.pageNumber = response.pageIndex;
+        this.shopParams.pageSize = response.pageSize;
+        this.totalCount = response.count;
       }, (error) => {
         console.log(error)
       })
@@ -61,18 +63,17 @@ export class ShopComponent implements OnInit {
   }
 
   public onBrandSelected(brandId: number) {
-    this.selectedBrandId = brandId;
+    this.shopParams.brandId = brandId;
     this.getProducts();
   }
 
   public onTypeSelected(typeId: number) {
-    this.selectedTypeId = typeId;
+    this.shopParams.typeId = typeId;
     this.getProducts();
   }
 
   onSortSelected(event: Event) {
-    console.log((event.target as HTMLInputElement).value)
-    this.selectedProperty = (event.target as HTMLInputElement).value;
+    this.shopParams.sort = (event.target as HTMLInputElement).value;
     this.getProducts();
   }
 }

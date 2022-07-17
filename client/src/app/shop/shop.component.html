@@ -7,12 +7,12 @@
       </select>
       <h5 class="text-primary ml-3 mt-1">Brands</h5>
       <ul class="list-group">
-        <li class="list-group-item" [class.active]="brand.id === selectedBrandId" [value]="brand.id"
+        <li class="list-group-item" [class.active]="brand.id === shopParams.brandId" [value]="brand.id"
             *ngFor="let brand of brands" aria-current="true" (click)="onBrandSelected(brand.id)">{{brand.name}}</li>
       </ul>
       <h5 class="text-primary ml-3 mt-1">Types</h5>
       <ul class="list-group my-3">
-        <li class="list-group-item" [class.active]="type.id === selectedTypeId" [value]="type.id"
+        <li class="list-group-item" [class.active]="type.id === shopParams.typeId" [value]="type.id"
             *ngFor="let type of types" aria-current="true" (click)="onTypeSelected(type.id)">{{type.name}}</li>
       </ul>
     </div>
@@ -32,6 +32,16 @@
       <div class="row my-2">
         <div class="col-md-4 my-2" *ngFor="let product of products">
           <app-product-item [product]="product"></app-product-item>
+        </div>
+        <div class="d-flex justify-content-center">
+          <pagination
+            [boundaryLinks]="true"
+            [totalItems]="this.totalCount"
+            previousText="&lsaquo;"
+            nextText="&rsaquo;"
+            firstText="&laquo;"
+            lastText="&raquo;"
+          ></pagination>
         </div>
       </div>
     </div>

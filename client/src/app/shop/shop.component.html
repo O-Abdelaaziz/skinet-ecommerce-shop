@@ -6,14 +6,14 @@
         <option selected>Alphabetical</option>
         <option>Price: Low to High</option>
         <option>Price: High to Low</option>
-      </select>
+       </select>
       <h5 class="text-primary ml-3 mt-1" >Brands</h5>
       <ul class="list-group" >
-        <li class="list-group-item" *ngFor="let brand of brands" aria-current="true">{{brand.name}}</li>
+        <li class="list-group-item" [class.active]="brand.id === selectedBrandId" [value]="brand.id"  *ngFor="let brand of brands" aria-current="true" (click)="onBrandSelected(brand.id)">{{brand.name}}</li>
       </ul>
       <h5 class="text-primary ml-3 mt-1" >Types</h5>
       <ul class="list-group my-3">
-        <li class="list-group-item"  *ngFor="let type of types" aria-current="true">{{type.name}}</li>
+        <li class="list-group-item"  [class.active]="type.id === selectedTypeId"  [value]="type.id" *ngFor="let type of types" aria-current="true" (click)="onTypeSelected(type.id)">{{type.name}}</li>
       </ul>
     </div>
     <div class="col-md-9">

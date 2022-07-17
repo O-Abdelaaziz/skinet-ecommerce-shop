@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {IPagination} from "../../shared/models/pagination";
 import {Observable} from "rxjs";
 import {IBrand} from "../../shared/models/brand";
@@ -15,8 +15,17 @@ export class ShopService {
   constructor(private _httpClient: HttpClient) {
   }
 
-  getProductsList(): Observable<IPagination> {
-    return this._httpClient.get<IPagination>(`${this.baseUrl}/products?pageSize=50`);
+  getProductsList(brandId?: number, typeId?: number): Observable<IPagination> {
+    let params = new HttpParams();
+
+    if (brandId) {
+      params = params.append("brandId", brandId.toString());
+    }
+
+    if (typeId) {
+      params = params.append("typeId", typeId.toString());
+    }
+    return this._httpClient.get<IPagination>(`${this.baseUrl}/products`, {params});
   }
 
   getBrandList(): Observable<IBrand[]> {

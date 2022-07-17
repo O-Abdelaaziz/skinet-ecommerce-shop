@@ -24,8 +24,8 @@
         </div>
         <div class="col-md-8 d-flex justify-content-end">
           <div class="form-inline">
-            <input type="search" class="form-control mr-2" style=" width: 300px" placeholder="Search">
-            <button class="btn btn-outline-primary btn-search">Search</button>
+            <input type="search" class="form-control mr-2" #search style=" width: 300px" placeholder="Search">
+            <button class="btn btn-outline-primary btn-search" (click)="onSearch()">Search</button>
           </div>
         </div>
       </div>
@@ -36,12 +36,19 @@
           <app-product-item [product]="product"></app-product-item>
         </div>
       </div>
-      <div class="d-flex justify-content-center" *ngIf="totalCount && totalCount> 0">
-       <app-pager
-         [pageSize]="shopParams.pageSize"
-         [totalCount]="totalCount"
-         (pageChanged)="onPageChange($event)"
-       ></app-pager>
+      <div class="d-flex justify-content-between" *ngIf="totalCount && totalCount> 0">
+        <div>
+          <app-pager
+            [pageSize]="shopParams.pageSize"
+            [totalCount]="totalCount"
+            (pageChanged)="onPageChange($event)"
+          ></app-pager>
+        </div>
+        <div>
+          <select class="form-control" id="pagesSizes" (change)="onPageSizeChange($event)">
+            <option *ngFor="let pageSize of pagesSizes" [value]="pageSize">{{pageSize}}</option>
+          </select>
+        </div>
       </div>
       <div class="d-flex justify-content-center" *ngIf="!totalCount">
         <p>No products found!</p>

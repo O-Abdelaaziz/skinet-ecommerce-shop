@@ -8,20 +8,12 @@
         <option>Price: High to Low</option>
       </select>
       <h5 class="text-primary ml-3 mt-1" >Brands</h5>
-      <ul class="list-group">
-        <li class="list-group-item active" aria-current="true">An active item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
+      <ul class="list-group" >
+        <li class="list-group-item"  *ngFor="let brnad of brands" aria-current="true">{{brnad.name}}</li>
       </ul>
       <h5 class="text-primary ml-3 mt-1" >Types</h5>
       <ul class="list-group my-3">
-        <li class="list-group-item active" aria-current="true">An active item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
+        <li class="list-group-item"  *ngFor="let type of types" aria-current="true">{{type.name}}</li>
       </ul>
     </div>
     <div class="col-md-9">

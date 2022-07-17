@@ -15,7 +15,7 @@ export class ShopService {
   constructor(private _httpClient: HttpClient) {
   }
 
-  getProductsList(brandId?: number, typeId?: number): Observable<IPagination> {
+  getProductsList(brandId?: number, typeId?: number, sort?: string): Observable<IPagination> {
     let params = new HttpParams();
 
     if (brandId) {
@@ -25,6 +25,11 @@ export class ShopService {
     if (typeId) {
       params = params.append("typeId", typeId.toString());
     }
+
+    if (sort) {
+      params = params.append("sort", sort.toString());
+    }
+
     return this._httpClient.get<IPagination>(`${this.baseUrl}/products`, {params});
   }
 

@@ -1,47 +1,47 @@
 <div class="container">
-<div class="row">
-  <div class="col-md-3 filter">
-    <h5 class="text-warning ml-3">Sort By</h5>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option selected>Alphabetical</option>
-      <option>Price: Low to High</option>
-      <option>Price: High to Low</option>
-    </select>
-    <h5 class="text-warning ml-3 mt-1">Brands</h5>
-    <ul class="list-group">
-      <li class="list-group-item active" aria-current="true">An active item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A fourth item</li>
-      <li class="list-group-item">And a fifth one</li>
-    </ul>
-    <h5 class="text-warning ml-3 mt-1">Types</h5>
-    <ul class="list-group my-3">
-      <li class="list-group-item active" aria-current="true">An active item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A fourth item</li>
-      <li class="list-group-item">And a fifth one</li>
-    </ul>
-  </div>
-  <div class="col-md-9">
-    <div class="row">
-      <div class="col-md-4">
-        <span>Showing <strong>10</strong> of <strong>16</strong></span>
+  <div class="row">
+    <div class="col-md-3 filter">
+      <h5 class="text-primary ml-3" >Sort By</h5>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option selected>Alphabetical</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+      </select>
+      <h5 class="text-primary ml-3 mt-1" >Brands</h5>
+      <ul class="list-group">
+        <li class="list-group-item active" aria-current="true">An active item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+      </ul>
+      <h5 class="text-primary ml-3 mt-1" >Types</h5>
+      <ul class="list-group my-3">
+        <li class="list-group-item active" aria-current="true">An active item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-4">
+          <span>Showing <strong>10</strong> of <strong>16</strong></span>
+        </div>
+        <div class="col-md-8 d-flex justify-content-end">
+          <div class="form-inline">
+            <input type="search" class="form-control mr-2" style=" width: 300px" placeholder="Search">
+            <button class="btn btn-outline-primary btn-search">Search</button>
+          </div>
+        </div>
       </div>
-      <div class="col-md-8 d-flex justify-content-end">
-        <div class="form-inline">
-          <input type="search" class="form-control mr-2" style=" width: 300px" placeholder="Search">
-          <button class="btn btn-outline-primary btn-search">Search</button>
+
+      <div class="row my-2">
+        <div class="col-md-4 my-2" *ngFor="let product of products">
+          <app-product-item [product]="product"></app-product-item>
         </div>
       </div>
     </div>
-
-    <div class="row my-2">
-      <div class="col-md-4" *ngFor="let product of products">
-        <app-product-item></app-product-item>
-      </div>
-    </div>
   </div>
-</div>
 </div>

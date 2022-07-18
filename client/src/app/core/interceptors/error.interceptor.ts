@@ -18,7 +18,11 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError((error) => {
         if (error) {
           if (error.status === 400) {
-            this._angularNotifierService.showNotification(NotifierEnum.ERROR, error.message);
+            if (error.error.errors) {
+              throw error.error;
+            } else {
+              this._angularNotifierService.showNotification(NotifierEnum.ERROR, error.message);
+            }
           }
           if (error.status === 401) {
             this._angularNotifierService.showNotification(NotifierEnum.WARNING, error.message);

@@ -1,11 +1,11 @@
 <div
   class="d-flex flex-column flex-md-row align-items-center justify-content-between p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
-  <img src="/assets/images/logo.png" style="max-height: 70px;" alt="main logo">
+  <img src="/assets/images/logo.png" style="max-height: 70px;" alt="main logo" routerLink="/">
   <nav class="my-2 my-md-0 mr-md-3 text-uppercase font-weight-bold">
-    <a class="p-2 text-dark" href="#">Home</a>
-    <a class="p-2 text-dark" href="#">Shop</a>
-    <a class="p-2 text-dark" href="#">Support</a>
-    <a class="p-2 text-dark" href="#">Contact</a>
+    <a class="p-2 text-dark" href="javascript:void(0)" [routerLink]="['/']">Home</a>
+    <a class="p-2 text-dark" href="javascript:void(0)" [routerLink]="['/shop']">Shop</a>
+    <a class="p-2 text-dark" href="javascript:void(0)" [routerLink]="['/support']">Support</a>
+    <a class="p-2 text-dark" href="javascript:void(0)" [routerLink]="['/contact']">Contact</a>
   </nav>
   <div class="d-flex align-items-center">
     <a href="" class="position-relative">

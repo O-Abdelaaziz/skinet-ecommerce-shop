@@ -5,7 +5,9 @@ import {ShopRoutingModule} from './shop-routing.module';
 import {ShopComponent} from './shop.component';
 import {ProductItemComponent} from './components/product-item/product-item.component';
 import {SharedModule} from "../shared/shared.module";
-import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import {ProductDetailsComponent} from './pages/product-details/product-details.component';
+import {CoreModule} from "../core/core.module";
+import {HomeModule} from "../home/home.module";
 
 
 @NgModule({
@@ -18,6 +20,7 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
     CommonModule,
     ShopRoutingModule,
     SharedModule,
+    HomeModule
   ],
   exports: [ShopComponent]
 })

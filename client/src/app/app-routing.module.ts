@@ -5,10 +5,10 @@ import {ServerErrorComponent} from "./core/pages/errors/server-error/server-erro
 import {NotFoundComponent} from "./core/pages/errors/not-found/not-found.component";
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'shop', loadChildren: () => import('./shop/shop.module').then(s => s.ShopModule)},
-  {path: 'server-error', component: ServerErrorComponent},
-  {path: 'not-found', component: NotFoundComponent},
+  {path: '', component: HomeComponent, data: {breadcrumb: 'Home'}},
+  {path: 'shop', loadChildren: () => import('./shop/shop.module').then(s => s.ShopModule), data: {breadcrumb: 'Shop'}},
+  {path: 'server-error', component: ServerErrorComponent, data: {breadcrumb: 'Server Error'}},
+  {path: 'not-found', component: NotFoundComponent, data: {breadcrumb: 'Not Found'}},
   {path: '**', redirectTo: '/not-found', pathMatch: 'full'},
 ];
 

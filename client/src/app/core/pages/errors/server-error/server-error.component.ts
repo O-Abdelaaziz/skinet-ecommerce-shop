@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-server-error',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./server-error.component.scss']
 })
 export class ServerErrorComponent implements OnInit {
+  public error: any;
 
-  constructor() { }
+  constructor(private _router: Router) {
+    this.getErrorsFromCurrentRouter();
+  }
 
   ngOnInit(): void {
+  }
+
+  getErrorsFromCurrentRouter() {
+    const navigation = this._router.getCurrentNavigation();
+    this.error = navigation && navigation.extras && navigation.extras.state && navigation.extras.state['error'];
   }
 
 }

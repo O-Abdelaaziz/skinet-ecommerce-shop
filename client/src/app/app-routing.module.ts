@@ -1,13 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./home/home.component";
-import {ShopComponent} from "./shop/shop.component";
-import {ProductDetailsComponent} from "./shop/pages/product-details/product-details.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'shop', component: ShopComponent},
-  {path: 'shop/:id', component: ProductDetailsComponent},
+  {path: 'shop', loadChildren: () => import('./shop/shop.module').then(s => s.ShopModule)},
   {path: '**', redirectTo: '', pathMatch: 'full'},
 ];
 

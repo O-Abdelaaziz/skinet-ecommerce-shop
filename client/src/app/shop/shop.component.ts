@@ -17,7 +17,7 @@ export class ShopComponent implements OnInit {
   public types: IType[] = [];
 
   public shopParams: ShopParams = new ShopParams();
-  public totalCount: number = 0;
+  public totalCount: number| undefined;
   public sortOptions = [
     {name: 'Alphabetical', value: 'name'},
     {name: 'Price Low to High', value: 'priceAsc'},

@@ -12,7 +12,7 @@ export class PagingHeaderComponent implements OnInit {
   @Input()
   public pageSize: number = 0;
   @Input()
-  public totalCount: number = 0;
+  public totalCount: number |undefined;
 
   constructor() {
   }

@@ -105,6 +105,10 @@
             "MySql.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.13, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.6.48, )"
             }
           },
           "imports": [

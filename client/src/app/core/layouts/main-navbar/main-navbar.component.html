@@ -1,19 +1,63 @@
-<div
-  class="d-flex flex-column flex-md-row align-items-center justify-content-between p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
-  <img src="/assets/images/logo.png" style="max-height: 70px;" alt="main logo" routerLink="/">
-  <nav class="my-2 my-md-0 mr-md-3 text-uppercase font-weight-bold">
-    <a class="p-2" href="javascript:void(0)" [routerLink]="['/']" routerLinkActive="active"
-       [routerLinkActiveOptions]="{exact:true}">Home</a>
-    <a class="p-2" href="javascript:void(0)" [routerLink]="['/shop']" routerLinkActive="active">Shop</a>
-    <a class="p-2" href="javascript:void(0)" [routerLink]="['/support']" routerLinkActive="active">Support</a>
-    <a class="p-2" href="javascript:void(0)" [routerLink]="['/contact']" routerLinkActive="active">Contact</a>
-  </nav>
-  <div class="d-flex align-items-center">
-    <a href="" class="position-relative">
-      <i class="fa fa-shopping-cart mr-5 fa-2x text-dark"></i>
-      <div class="cart-size">5</div>
-    </a>
-    <a class="btn btn-outline-primary mr-2" href="#">Sign in</a>
-    <a class="btn btn-outline-secondary mr-3" href="#">Sign up</a>
+<!--<div-->
+<!--  class="d-flex flex-column flex-md-row align-items-center justify-content-between p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">-->
+<!--  <img src="/assets/images/logo.png" style="max-height: 70px;" alt="main logo" routerLink="/">-->
+<!--  <nav class="my-2 my-md-0 mr-md-3 text-uppercase font-weight-bold">-->
+<!--    <a class="p-2" href="javascript:void(0)" [routerLink]="['/']" routerLinkActive="active"-->
+<!--       [routerLinkActiveOptions]="{exact:true}">Home</a>-->
+<!--    <a class="p-2" href="javascript:void(0)" [routerLink]="['/shop']" routerLinkActive="active">Shop</a>-->
+<!--    <a class="p-2" href="javascript:void(0)" [routerLink]="['/support']" routerLinkActive="active">Support</a>-->
+<!--    <a class="p-2" href="javascript:void(0)" [routerLink]="['/contact']" routerLinkActive="active">Contact</a>-->
+<!--  </nav>-->
+<!--  <div class="d-flex align-items-center">-->
+<!--    <a href="" class="position-relative">-->
+<!--      <i class="fa fa-shopping-cart mr-5 fa-2x text-dark"></i>-->
+<!--      <div class="cart-size">5</div>-->
+<!--    </a>-->
+<!--    <a class="btn btn-outline-primary mr-2" href="#">Sign in</a>-->
+<!--    <a class="btn btn-outline-secondary mr-3" href="#">Sign up</a>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light fs-5">
+  <a class="navbar-brand" href="#" routerLink="/">
+    <img src="/assets/images/logo.png" class="img-fluid img-thumbnail" style="max-height: 50px;" alt="main logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseBasic"
+          aria-controls="collapseBasic" [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation"
+          (click)="isCollapsed = !isCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapseBasic" [collapse]="!isCollapsed"  [isAnimated]="true">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="p-2" href="javascript:void(0)" [routerLink]="['/']" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact:true}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="p-2" href="javascript:void(0)" [routerLink]="['/shop']" routerLinkActive="active">Shop</a>
+      </li>
+      <li class="nav-item">
+        <a class="p-2" href="javascript:void(0)" [routerLink]="['/support']" routerLinkActive="active">Support</a>
+      </li>
+      <li class="nav-item">
+        <a class="p-2" href="javascript:void(0)" [routerLink]="['/contact']" routerLinkActive="active">Support</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a href="" class="position-relative">
+          <i class="fa fa-shopping-cart mr-5 fa-2x text-dark"></i>
+          <div class="cart-size">5</div>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="btn btn-outline-primary mr-2 mt-2" href="#">Sign in</a>
+      </li>
+      <li class="nav-item active">
+        <a class="btn btn-outline-primary mr-3 mt-2" href="#">Sign up</a>
+      </li>
+    </ul>
   </div>
-</div>
+</nav>

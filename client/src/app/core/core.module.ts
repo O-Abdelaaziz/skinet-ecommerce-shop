@@ -8,6 +8,7 @@ import {NotifierModule} from "angular-notifier";
 import {customNotifierOption} from "./constants/notifier-cosntant";
 import {MainHeaderComponent} from './layouts/main-header/main-header.component';
 import {BreadcrumbModule} from "xng-breadcrumb";
+import {CollapseModule} from "ngx-bootstrap/collapse";
 
 @NgModule({
   declarations: [MainNavbarComponent, NotFoundComponent, ServerErrorComponent, MainHeaderComponent],
@@ -16,6 +17,7 @@ import {BreadcrumbModule} from "xng-breadcrumb";
     RouterModule,
     BreadcrumbModule,
     NotifierModule.withConfig(customNotifierOption),
+    CollapseModule,
   ],
   exports: [MainNavbarComponent, MainHeaderComponent, NotFoundComponent, ServerErrorComponent , NotifierModule]
 })

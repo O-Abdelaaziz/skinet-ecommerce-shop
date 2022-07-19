@@ -11,6 +11,7 @@ import {ErrorInterceptor} from "./core/interceptors/error.interceptor";
 import {HomeModule} from "./home/home.module";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {LoadingInterceptor} from "./core/interceptors/loading.interceptor";
+import {DecimalPipe} from "@angular/common";
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import {LoadingInterceptor} from "./core/interceptors/loading.interceptor";
     CoreModule,
   ],
   providers: [
+    DecimalPipe,
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],

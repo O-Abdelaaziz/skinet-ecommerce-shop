@@ -2,16 +2,16 @@
   <div class="row">
     <div class="col-md-3 filter">
       <ng-container *ngIf="brands.length>0 && types.length>0">
-      <h5 class="text-primary ml-3">Sort By</h5>
+      <h5 class="text-primary ml-3 font-weight-bold">Sort By</h5>
         <select class="form-control" id="exampleFormControlSelect1" (change)="onSortSelected($event)">
           <option *ngFor="let sort of sortOptions" [value]="sort.value">{{sort.name}}</option>
         </select>
-        <h5 class="text-primary ml-3 mt-1">Brands</h5>
+        <h5 class="text-primary ml-3 mt-1 font-weight-bold">Brands</h5>
         <ul class="list-group">
           <li class="list-group-item" [class.active]="brand.id === shopParams.brandId" [value]="brand.id"
               *ngFor="let brand of brands" aria-current="true" (click)="onBrandSelected(brand.id)">{{brand.name}}</li>
         </ul>
-        <h5 class="text-primary ml-3 mt-1">Types</h5>
+        <h5 class="text-primary ml-3 mt-1 font-weight-bold">Types</h5>
         <ul class="list-group my-3">
           <li class="list-group-item" [class.active]="type.id === shopParams.typeId" [value]="type.id"
               *ngFor="let type of types" aria-current="true" (click)="onTypeSelected(type.id)">{{type.name}}</li>

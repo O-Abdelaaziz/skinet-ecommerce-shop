@@ -11,7 +11,7 @@ import {IProduct} from "../../shared/models/product";
 })
 export class BasketService {
   public readonly baseUrl: string = environment.baseUrl;
-  private basketSource: BehaviorSubject<IBasket> = new BehaviorSubject<IBasket>({id: '', items: []});
+  private basketSource: BehaviorSubject<IBasket | null> = new BehaviorSubject<IBasket | null>(null);
   public basket$ = this.basketSource.asObservable();
 
   constructor(private _httpClient: HttpClient) {
@@ -27,12 +27,14 @@ export class BasketService {
   }
 
   public setBasket(basket: IBasket) {
-    return this._httpClient.post<IBasket>(`${this.baseUrl}/basket`, basket)
+    console.log(basket)
+    return this._httpClient.post<Basket>(`${this.baseUrl}/basket`, basket)
       .subscribe(
         (response: IBasket) => {
+          console.log(response)
           this.basketSource.next(response)
         }, (error) => {
-          console.log("Error In setBasket : " + error)
+          console.log("Error In setBasket : " + JSON.stringify(error))
         });
   }
 
@@ -61,12 +63,12 @@ export class BasketService {
 
   private createBasket(): IBasket {
     const basket = new Basket();
-    localStorage.setItem('basket_id', JSON.stringify(basket.id))
+    localStorage.setItem('basket_id', basket.id)
     return basket;
   }
 
   private addOrUpdateItem(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {
-    const index = items.findIndex(i => i.id = itemToAdd.id);
+    const index = items.findIndex(i => i.id === itemToAdd.id);
     if (index === -1) {
       itemToAdd.quantity = quantity;
       items.push(itemToAdd);

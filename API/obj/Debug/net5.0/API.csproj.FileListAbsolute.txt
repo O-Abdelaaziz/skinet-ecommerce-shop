@@ -16,7 +16,6 @@ C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\obj\Debug\net5.
 C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\obj\Debug\net5.0\API.AssemblyInfoInputs.cache
 C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\obj\Debug\net5.0\API.AssemblyInfo.cs
 C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\obj\Debug\net5.0\API.csproj.CoreCompileInputs.cache
-C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\obj\Debug\net5.0\API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\obj\Debug\net5.0\API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\obj\Debug\net5.0\staticwebassets\API.StaticWebAssets.Manifest.cache
 C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\obj\Debug\net5.0\staticwebassets\API.StaticWebAssets.xml

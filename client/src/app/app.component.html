@@ -1,9 +1,11 @@
-<ngx-spinner>
-  <h3>Loading ...</h3>
-</ngx-spinner>
-<app-main-navbar></app-main-navbar>
-<app-main-header></app-main-header>
-<div>
-<router-outlet></router-outlet>
+<div class="main">
+  <ngx-spinner>
+    <h3>Loading ...</h3>
+  </ngx-spinner>
+  <app-main-navbar></app-main-navbar>
+  <app-main-header></app-main-header>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+  <notifier-container></notifier-container>
 </div>
-<notifier-container></notifier-container>

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {DecimalPipe} from '@angular/common';
+import {BasketService} from "./basket/services/basket.service";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,10 +14,27 @@ gsap.registerPlugin(ScrollTrigger);
 export class AppComponent implements OnInit {
   public reachedTheEnd: boolean = false;
 
-  constructor(private decimalPipe: DecimalPipe) {
+  constructor(private decimalPipe: DecimalPipe,private _basketService:BasketService) {
   }
 
   ngOnInit() {
+    this.initialiseBasket();
+    this.UpdateProgressStatus();
+  }
+
+  private  initialiseBasket(){
+    const basketId=localStorage.getItem('basket_id');
+    if(basketId){
+      this._basketService.getBasket(basketId).subscribe(
+        ()=>{
+          console.log('Basket Initialised')
+        },(error)=>{
+          console.log(error)
+        }
+      )
+    }
+  }
+  private UpdateProgressStatus() {
     gsap.to('progress', {
       value: 100,
       scrollTrigger: {

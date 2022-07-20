@@ -47,7 +47,7 @@
       <li class="nav-item active">
         <a href="javascript:void(0)" routerLink="/basket" class="position-relative">
           <i class="fa fa-shopping-cart mr-5 fa-2x text-dark"></i>
-          <div class="cart-size">5</div>
+          <div *ngIf="(basket$ | async) as basket" class="cart-size">{{basket.items.length}}</div>
         </a>
       </li>
       <li class="nav-item active">

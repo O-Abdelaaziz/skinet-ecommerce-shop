@@ -30,7 +30,6 @@ export class BasketService {
   }
 
   public setBasket(basket: IBasket) {
-    console.log(basket)
     return this._httpClient.post<Basket>(`${this.baseUrl}/basket`, basket)
       .subscribe(
         (response: IBasket) => {
@@ -47,9 +46,60 @@ export class BasketService {
 
   public addItemsToBasket(item: IProduct, quantity: number = 1) {
     const itemToAdd: IBasketItem = this.mapProductItemToBasketItem(item, quantity);
-    const basket = this.getCurrentBasket() ?? this.createBasket();
-    basket.items = this.addOrUpdateItem(basket.items, itemToAdd, quantity);
-    this.setBasket(basket);
+    let basket = this.getCurrentBasket();
+    if (basket === null) {
+      this.createBasket();
+    } else {
+      basket.items = this.addOrUpdateItem(basket.items, itemToAdd, quantity);
+      this.setBasket(basket);
+    }
+  }
+
+  public incrementItemQuantity(item: IBasketItem) {
+    const basket = this.getCurrentBasket();
+    if (basket) {
+      const foundItemIndex = basket.items.findIndex(x => x.id === item.id);
+      basket.items[foundItemIndex].quantity++;
+      this.setBasket(basket);
+    }
+  }
+
+  public decrementItemQuantity(item: IBasketItem) {
+    const basket = this.getCurrentBasket();
+    if (basket) {
+      const foundItemIndex = basket.items.findIndex(x => x.id === item.id);
+      if (basket.items[foundItemIndex].quantity > 1) {
+        basket.items[foundItemIndex].quantity--;
+      } else {
+        this.removeItemFromBasket(item);
+      }
+      this.setBasket(basket);
+    }
+  }
+
+  public removeItemFromBasket(item: IBasketItem) {
+    const basket = this.getCurrentBasket();
+    if (basket?.items.some(x => x.id === item.id)) {
+
+      basket.items = basket?.items.filter(x => x.id !== item.id);
+      if (basket?.items.length > 0) {
+        this.setBasket(basket);
+      } else {
+        this.deleteBasket(basket);
+      }
+    }
+  }
+
+  private deleteBasket(basket: IBasket) {
+    return this._httpClient.delete(`${this.baseUrl}/basket?id=${basket.id}`).subscribe(
+      () => {
+        this.basketSource.next(null);
+        this.basketTotalSource.next(null);
+        localStorage.removeItem('basket_id');
+      }, (error) => {
+        console.log(error);
+      }
+    )
   }
 
   private mapProductItemToBasketItem(product: IProduct, quantity: number): IBasketItem {

@@ -45,13 +45,13 @@
                 </th>
                 <td class="align-middle text-center"><strong>{{item.price | currency}}</strong></td>
                 <td class="align-middle text-center">
-                  <i class="fa fa-minus-circle text-primary mr-2" style="cursor: pointer; font-size: 2em;"></i>
+                  <i (click)="decrementItemQuantity(item)" class="fa fa-minus-circle text-primary mr-2" style="cursor: pointer; font-size: 2em;"></i>
                   <span class="font-weight-bold" style="font-size: 1.5em;">{{item.quantity}}</span>
-                  <i class="fa fa-plus-circle text-success mx-2" style="cursor: pointer; font-size: 2em;"></i>
+                  <i (click)="incrementItemQuantity(item)" class="fa fa-plus-circle text-success mx-2" style="cursor: pointer; font-size: 2em;"></i>
                 </td>
                 <td class="align-middle text-center">{{(item.price * item.quantity) | currency}}</td>
                 <td class="align-middle text-center">
-                  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                  <button (click)="removeBasketItem(item)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
               </tbody>

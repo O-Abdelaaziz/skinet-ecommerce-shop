@@ -49,13 +49,20 @@
                   <span class="font-weight-bold" style="font-size: 1.5em;">{{item.quantity}}</span>
                   <i class="fa fa-plus-circle text-success mx-2" style="cursor: pointer; font-size: 2em;"></i>
                 </td>
-                <td class="align-middle text-center">{{(item.price * item.quantity ) | currency}}</td>
+                <td class="align-middle text-center">{{(item.price * item.quantity) | currency}}</td>
                 <td class="align-middle text-center">
                   <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 offset-6">
+            <app-order-totals></app-order-totals>
+            <a href="javascript:void(0)" routerLink="/checkout" class="btn btn-outline-primary py-2 btn-block font-weight-bold"><i
+              class="fa fa-shopping-cart"></i> Proceed to Checkout</a>
           </div>
         </div>
       </div>

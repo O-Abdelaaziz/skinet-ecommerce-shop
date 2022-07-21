@@ -3,7 +3,7 @@ import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {map} from "rxjs/operators";
-import {Basket, IBasket, IBasketItem} from "../../shared/models/basket";
+import {Basket, IBasket, IBasketItem, IBasketTotals} from "../../shared/models/basket";
 import {IProduct} from "../../shared/models/product";
 
 @Injectable({
@@ -13,6 +13,8 @@ export class BasketService {
   public readonly baseUrl: string = environment.baseUrl;
   private basketSource: BehaviorSubject<IBasket | null> = new BehaviorSubject<IBasket | null>(null);
   public basket$ = this.basketSource.asObservable();
+  private basketTotalSource: BehaviorSubject<IBasketTotals | null> = new BehaviorSubject<IBasketTotals | null>(null);
+  public basketTotal$ = this.basketTotalSource.asObservable();
 
   constructor(private _httpClient: HttpClient) {
   }
@@ -22,6 +24,7 @@ export class BasketService {
       .pipe(
         map((basket: IBasket) => {
           this.basketSource.next(basket);
+          this.calculateTotals();
         })
       );
   }
@@ -31,8 +34,8 @@ export class BasketService {
     return this._httpClient.post<Basket>(`${this.baseUrl}/basket`, basket)
       .subscribe(
         (response: IBasket) => {
-          console.log(response)
-          this.basketSource.next(response)
+          this.basketSource.next(response);
+          this.calculateTotals();
         }, (error) => {
           console.log("Error In setBasket : " + JSON.stringify(error))
         });
@@ -76,5 +79,13 @@ export class BasketService {
       items[index].quantity++;
     }
     return items;
+  }
+
+  private calculateTotals() {
+    const basket = this.getCurrentBasket();
+    const shipping = 0;
+    const subtotal = Number(basket?.items.reduce((a, b) => (b.price * b.quantity) + a, 0));
+    const total = subtotal + shipping;
+    this.basketTotalSource.next({shipping, total, subtotal})
   }
 }

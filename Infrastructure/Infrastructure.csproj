@@ -5,9 +5,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.21.0" />
 		<PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.13" />
 		<PackageReference Include="StackExchange.Redis" Version="2.6.48" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.21.0" />
 	</ItemGroup>
 
 	<ItemGroup>

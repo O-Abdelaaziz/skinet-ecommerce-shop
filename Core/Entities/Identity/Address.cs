@@ -12,7 +12,7 @@ namespace Core.Entities.Identity
         public string Street { get; set; }
         public string State { get; set; }
         public string ZipCode { get; set; }
-        [Required]
+        [Required, MaxLength(85)]
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
     }

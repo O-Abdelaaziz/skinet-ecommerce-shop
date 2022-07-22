@@ -32,13 +32,15 @@ namespace API
             services.AddDbContext<StoreContext>(x => x.UseMySQL(mySqlConnectionStr));
             services.AddDbContext<AppIdentityDbContext>(x => x.UseMySQL(_configuration.GetConnectionString("IdentityConnection")));
 
-            services.AddSingleton<IConnectionMultiplexer>(c => {
+            services.AddSingleton<IConnectionMultiplexer>(c =>
+            {
                 var configuration = ConfigurationOptions.Parse(_configuration
                     .GetConnectionString("Redis"), true);
                 return ConnectionMultiplexer.Connect(configuration);
             });
 
             services.AddApplicationServices();
+            services.AddIdentityServices();
             services.AddSwaggerServiceExtention();
             services.AddCors(option =>
             {

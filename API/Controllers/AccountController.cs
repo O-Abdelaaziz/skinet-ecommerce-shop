@@ -1,6 +1,7 @@
 ﻿using API.Dtos;
 using API.Errors;
 using Core.Entities.Identity;
+using Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,15 +12,17 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseApiController
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly ITokenService _tokenService;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
+            this._tokenService = tokenService;
         }
 
         [HttpPost("login")]
@@ -36,7 +39,7 @@ namespace API.Controllers
             return new UserDto
             {
                 Email = user.Email,
-                Token = "This can be agenerated token",
+                Token = this._tokenService.CreateToken(user),
                 DisplayName = user.DisplayName
             };
         }
@@ -59,7 +62,7 @@ namespace API.Controllers
             return new UserDto
             {
                 DisplayName = user.DisplayName,
-                Token = "This can be agenerated token",
+                Token = this._tokenService.CreateToken(user),
                 Email = user.Email
             };
         }

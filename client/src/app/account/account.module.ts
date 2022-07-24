@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AccountRoutingModule } from './account-routing.module';
-import { AccountComponent } from './account.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
+import {AccountRoutingModule} from './account-routing.module';
+import {AccountComponent} from './account.component';
+import {LoginComponent} from './pages/login/login.component';
+import {RegisterComponent} from './pages/register/register.component';
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { RegisterComponent } from './pages/register/register.component';
   ],
   imports: [
     CommonModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    SharedModule
   ]
 })
-export class AccountModule { }
+export class AccountModule {
+}

@@ -22,7 +22,7 @@ export class MainNavbarComponent implements OnInit {
     this.getCurrentBasketValue();
     this.getCurrentUserValue();
   }
-
+  
   public getCurrentBasketValue() {
     this.basket$ = this._basketService.basket$;
   }

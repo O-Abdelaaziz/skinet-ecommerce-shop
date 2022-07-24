@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs";
 import {map} from "rxjs/operators";
 import {IUser} from "../../shared/models/user";
@@ -48,5 +48,23 @@ export class AccountService {
 
   public checkEmailExist(email: string) {
     return this._httpClient.get(`${this.baseUrl}/account/emailexists?email=${email}`);
+  }
+
+  public loadCurrentUser(token: string) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${token}`);
+    return this._httpClient.get<IUser>(`${this.baseUrl}/account`, {headers})
+      .pipe(
+        map((user: IUser) => {
+          if (user) {
+            localStorage.setItem('token', user.token);
+            this.currentUserSource.next(user);
+          }
+        })
+      )
+  }
+
+  public getCurrentUser() {
+    return this.currentUserSource.value;
   }
 }

@@ -27,7 +27,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="collapseBasic" [collapse]="!isCollapsed"  [isAnimated]="true">
+  <div class="collapse navbar-collapse" id="collapseBasic" [collapse]="!isCollapsed" [isAnimated]="true">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="p-2" href="javascript:void(0)" [routerLink]="['/']" routerLinkActive="active"
@@ -50,12 +50,21 @@
           <div *ngIf="(basket$ | async) as basket" class="cart-size">{{basket.items.length}}</div>
         </a>
       </li>
-      <li class="nav-item active">
-        <a class="btn btn-outline-primary mr-2 mt-2" href="javascript:void(0)" routerLink="/account/login">Sign in</a>
-      </li>
-      <li class="nav-item active">
-        <a class="btn btn-outline-primary mr-3 mt-2 mb-2" href="javascript:void(0)" routerLink="/account/register">Sign up</a>
-      </li>
+      <ng-container *ngIf="(currentUser$ | async) === null">
+        <li class="nav-item active">
+          <a class="btn btn-outline-primary mr-2 mt-2" href="javascript:void(0)" routerLink="/account/login">Sign in</a>
+        </li>
+        <li class="nav-item active">
+          <a class="btn btn-outline-primary mr-3 mt-2 mb-2" href="javascript:void(0)" routerLink="/account/register">Sign
+            up</a>
+        </li>
+      </ng-container>
+
+      <ng-container *ngIf="(currentUser$ | async) as user">
+        <li class="nav-item active">
+          <a class="btn btn-default mr-2 mt-2" href="javascript:void(0)" routerLink="/account/profile">Welcome {{user.displayName}}</a>
+        </li>
+      </ng-container>
     </ul>
   </div>
   <progress value="0" max="100"></progress>

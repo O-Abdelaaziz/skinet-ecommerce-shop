@@ -7,13 +7,27 @@
       </div>
 
       <div class="form-label-group">
-        <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" id="email" formControlName="email" class="form-control mb-1" placeholder="Email address" required
+               autofocus>
         <label for="email">Email address</label>
+        <span class="text-danger"
+              *ngIf="(loginFormControls['email'].touched || submitted) && loginFormControls['email'].errors?.['required']">
+          Email is required
+        </span>
+        <span class="text-danger"
+              *ngIf="(loginFormControls['email'].touched || submitted) && loginFormControls['email'].errors?.['email']">
+           Enter a valid email address
+        </span>
       </div>
 
       <div class="form-label-group">
-        <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password" required>
+        <input type="password" id="password" formControlName="password" class="form-control mb-1" placeholder="Password"
+               required>
         <label for="password">Password</label>
+        <span class="text-danger"
+              *ngIf="(loginFormControls['password'].touched || submitted) && loginFormControls['password'].errors?.['required']">
+          Password is required
+        </span>
       </div>
 
       <div class="checkbox mb-3">

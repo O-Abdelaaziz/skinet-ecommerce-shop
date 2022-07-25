@@ -20,6 +20,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         if (error) {
           if (error.status === 400) {
             if (error.error.errors) {
+              this._angularNotifierService.showNotification(NotifierEnum.ERROR, error.message);
               throw error.error;
             } else {
               this._angularNotifierService.showNotification(NotifierEnum.ERROR, error.message);

@@ -40,7 +40,7 @@
         <a class="p-2" href="javascript:void(0)" [routerLink]="['/support']" routerLinkActive="active">Support</a>
       </li>
       <li class="nav-item">
-        <a class="p-2" href="javascript:void(0)" [routerLink]="['/contact']" routerLinkActive="active">Support</a>
+        <a class="p-2" href="javascript:void(0)" [routerLink]="['/contact']" routerLinkActive="active">Contact</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
@@ -61,8 +61,27 @@
       </ng-container>
 
       <ng-container *ngIf="(currentUser$ | async) as user">
-        <li class="nav-item active">
-          <a class="btn btn-default mr-2 mt-2" href="javascript:void(0)" routerLink="/account/profile">Welcome {{user.displayName}}</a>
+        <!--        <li class="nav-item active">-->
+        <!--          <a class="btn btn-default mr-2 mt-2" href="javascript:void(0)" routerLink="/account/profile">Welcome {{user.displayName}}</a>-->
+        <!--        </li>-->
+        <li class="nav-item">
+          <div class="btn-group" dropdown [insideClick]="true">
+            <button dropdownToggle type="button" class="btn btn-default dropdown-toggle">
+              Welcome {{user.displayName}} <span class="caret"></span>
+            </button>
+            <ul *dropdownMenu class="dropdown-menu" role="menu">
+              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" routerLink="/basket"><i
+                class="fa fa-shopping-cart"></i> View Basket</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" routerLink="/orders"><i
+                class="fa fa-history"></i> View Orders</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" routerLink="/wish-list "><i
+                class="fa fa-check-square-o"></i> View Wish List</a></li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="onLogout()"><i
+                class="fa fa-sign-out"></i> Logout</a>
+              </li>
+            </ul>
+          </div>
         </li>
       </ng-container>
     </ul>

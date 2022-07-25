@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AccountService} from "../../services/account.service";
 import {IUser} from "../../../shared/models/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _accountService: AccountService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _router: Router,
   ) {
     this.loginFormGroup = new FormGroup({
       email: new FormControl('',),
@@ -37,7 +39,8 @@ export class LoginComponent implements OnInit {
   public onSubmitForm() {
     this._accountService.login(this.loginFormGroup.value).subscribe(
       (user) => {
-        console.log('User login with : '+user);
+        console.log('User login with : ' + user);
+        this._router.navigateByUrl("/shop");
       }, (error) => {
         console.log(error)
       }

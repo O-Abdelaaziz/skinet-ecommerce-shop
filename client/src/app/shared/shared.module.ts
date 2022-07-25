@@ -6,6 +6,7 @@ import {PaginationModule} from "ngx-bootstrap/pagination";
 import {CarouselModule} from "ngx-bootstrap/carousel";
 import {OrderTotalsComponent} from './components/order-totals/order-totals.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 
 
 @NgModule({
@@ -16,16 +17,18 @@ import {ReactiveFormsModule} from "@angular/forms";
   ],
   imports: [
     CommonModule,
-    PaginationModule,
-    CarouselModule,
     ReactiveFormsModule,
+    PaginationModule.forRoot(),
+    CarouselModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ], exports: [
+    ReactiveFormsModule,
     PagingHeaderComponent,
     PagerComponent,
     OrderTotalsComponent,
+    PaginationModule,
     CarouselModule,
-    ReactiveFormsModule,
-
+    BsDropdownModule
   ],
 })
 export class SharedModule {

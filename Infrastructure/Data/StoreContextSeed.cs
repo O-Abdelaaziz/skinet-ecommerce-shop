@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using Core.Entities.OrderAggregate;
 
 namespace Infrastructure.Data
 {
@@ -51,6 +52,20 @@ namespace Infrastructure.Data
                     {
                         storeContext.Products.Add(item);
                     }
+                    await storeContext.SaveChangesAsync();
+                }
+
+                if (!storeContext.DeliveryMethods.Any())
+                {
+                    string fildPath = "../Infrastructure/Data/SeedData/delivery.json";
+                    var deliveryData = File.ReadAllText(fildPath);
+                    var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(deliveryData);
+
+                    foreach (var item in methods)
+                    {
+                        storeContext.DeliveryMethods.Add(item);
+                    }
+
                     await storeContext.SaveChangesAsync();
                 }
             }

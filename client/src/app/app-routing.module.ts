@@ -4,6 +4,7 @@ import {HomeComponent} from "./home/home.component";
 import {ServerErrorComponent} from "./core/pages/errors/server-error/server-error.component";
 import {NotFoundComponent} from "./core/pages/errors/not-found/not-found.component";
 import {AuthenticationGuard} from "./core/guards/authentication.guard";
+import {LoggedInGuard} from "./core/guards/logged-in.guard";
 
 const routes: Routes = [
   {path: '', component: HomeComponent, data: {breadcrumb: 'Home'}},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {
     path: 'account',
     loadChildren: () => import('./account/account.module').then(a => a.AccountModule),
+    canActivate:[LoggedInGuard],
     data: {breadcrumb: {skip: true}}
   },
   {path: 'server-error', component: ServerErrorComponent, data: {breadcrumb: 'Server Error'}},

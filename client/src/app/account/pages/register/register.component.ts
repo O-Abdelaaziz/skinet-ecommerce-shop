@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AsyncValidatorFn, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AccountService} from "../../services/account.service";
 import {Router} from "@angular/router";
+import {of, switchMap, timer} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-register',
@@ -28,7 +30,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerFormGroup = this._formBuilder.group({
       displayName: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email], [this.validateEmailNotTaken()]),
       password: new FormControl('', [Validators.required]),
     });
   }
@@ -50,5 +52,23 @@ export class RegisterComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     const nextYear = new Date().getFullYear() + 1;
     return `${currentYear} - ${nextYear}`
+  }
+
+  public validateEmailNotTaken(): AsyncValidatorFn {
+    return control => {
+      return timer(500).pipe(
+        switchMap(() => {
+            if (!control.value) {
+              return of(null);
+            }
+            return this._accountService.checkEmailExist(control.value).pipe(
+              map((response) => {
+                return response ? {emailExists: true} : null;
+              }),
+            );
+          }
+        ),
+      );
+    }
   }
 }

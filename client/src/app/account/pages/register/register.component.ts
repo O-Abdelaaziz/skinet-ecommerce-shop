@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent implements OnInit {
   public registerFormGroup: FormGroup;
+  public errors: string[] = [];
   public submitted = false;
 
   constructor(
@@ -39,7 +40,8 @@ export class RegisterComponent implements OnInit {
         console.log('User register with : ' + user);
         this._router.navigateByUrl("/shop");
       }, (error) => {
-        console.log(error)
+        console.log(error);
+        this.errors = error.errors;
       }
     );
   }

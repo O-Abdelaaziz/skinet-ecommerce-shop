@@ -1,19 +1,25 @@
-<div class="d-flex justify-content-center mt-5">
-  <div class="col-md-3">
+<div class="d-flex flex-column align-items-center justify-content-center mt-5">
+  <div *ngIf="errors.length !==0">
+    <p class="text-danger"><i class="fa fa-exclamation-circle"></i> There are items that require your attention</p>
+    <div class="alert alert-danger fade show" role="alert">
+      <ul>
+        <li *ngFor="let error of errors"><i class="fa fa-exclamation-circle"></i> {{error}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4">
     <form [formGroup]="registerFormGroup" (ngSubmit)="onSubmitForm()">
       <div class="text-center mb-4">
         <i class="fa fa-user-plus fa-3x text-primary mb-4 fa-border"></i>
         <h1 class="h3 mb-3 font-weight-normal">Register</h1>
       </div>
-
       <app-text-input formControlName="displayName" [label]="'Name'"></app-text-input>
 
       <app-text-input formControlName="email" [label]="'Email Address'"></app-text-input>
 
       <app-text-input formControlName="password" [label]="'Password'" [type]="'password'"></app-text-input>
 
-
-      <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Sign iup</button>
+      <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Sign up</button>
       <p class="mt-5 mb-3 text-muted text-center">&copy; {{getFullyCopyrightYear()}}</p>
     </form>
   </div>

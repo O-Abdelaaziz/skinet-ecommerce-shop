@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {ServerErrorComponent} from "./core/pages/errors/server-error/server-error.component";
 import {NotFoundComponent} from "./core/pages/errors/not-found/not-found.component";
+import {AuthenticationGuard} from "./core/guards/authentication.guard";
 
 const routes: Routes = [
   {path: '', component: HomeComponent, data: {breadcrumb: 'Home'}},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {
     path: 'checkout',
     loadChildren: () => import('./checkout/checkout.module').then(c => c.CheckoutModule),
+    canActivate: [AuthenticationGuard],
     data: {breadcrumb: 'Checkout'}
   },
   {

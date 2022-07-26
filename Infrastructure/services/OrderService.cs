@@ -18,7 +18,7 @@ namespace Infrastructure.services
         public OrderService(IGenericRepository<Order> orderRepository, IGenericRepository<DeliveryMethod> deliveryMethodRepository,
             IGenericRepository<Product> productRepository, IBasketRepository basketRepository)
         {
-            this._ = orderRepository;
+            this._orderRepository = orderRepository;
             this._deliveryMethodRepository = deliveryMethodRepository;
             this._productRepository = productRepository;
             this._basketRepository = basketRepository;

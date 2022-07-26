@@ -45,7 +45,12 @@ export class LoginComponent implements OnInit {
       }, (error) => {
         console.log(error)
       }
-    )
+    );
   }
 
+  public getFullyCopyrightYear() {
+    const currentYear = new Date().getFullYear();
+    const nextYear = new Date().getFullYear() + 1;
+    return `${currentYear} - ${nextYear}`
+  }
 }

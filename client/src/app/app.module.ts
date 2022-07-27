@@ -12,6 +12,7 @@ import {HomeModule} from "./home/home.module";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {LoadingInterceptor} from "./core/interceptors/loading.interceptor";
 import {DecimalPipe} from "@angular/common";
+import {JwtInterceptor} from "./core/interceptors/jwt.interceptor";
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import {DecimalPipe} from "@angular/common";
   ],
   providers: [
     DecimalPipe,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],

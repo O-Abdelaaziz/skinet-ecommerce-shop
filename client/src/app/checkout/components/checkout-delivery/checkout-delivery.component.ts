@@ -10,7 +10,7 @@ import {IDeliveryMethod} from "../../../shared/models/DeliveryMethod";
 })
 export class CheckoutDeliveryComponent implements OnInit {
   @Input()
-  public checkoutFormDelivery!: FormGroup;
+  public checkoutForm!: FormGroup;
   public deliveryMethods: IDeliveryMethod[] = [];
 
   constructor(private _checkoutService: CheckoutService) {

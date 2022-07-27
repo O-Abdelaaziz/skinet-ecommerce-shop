@@ -28,12 +28,12 @@ import { StepperComponent } from './components/stepper/stepper.component';
     BsDropdownModule.forRoot(),
     CdkStepperModule,
   ], exports: [
-    ReactiveFormsModule,
     PagingHeaderComponent,
     PagerComponent,
     OrderTotalsComponent,
     TextInputComponent,
     StepperComponent,
+    ReactiveFormsModule,
     CarouselModule,
     BsDropdownModule,
     PaginationModule,

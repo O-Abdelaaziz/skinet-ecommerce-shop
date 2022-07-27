@@ -1,11 +1,43 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-8">
-      <app-stepper [linearModeSelected]="false" #stapper>
-        <cdk-step [label]="'Address'">1</cdk-step>
-        <cdk-step [label]="'Delivery'">2</cdk-step>
-        <cdk-step [label]="'Review'">3</cdk-step>
-        <cdk-step [label]="'Payment'">4</cdk-step>
+      <app-stepper [linearModeSelected]="false" #cdkStepper>
+        <cdk-step>
+          <ng-template cdkStepLabel>
+           <span class="icon is-medium">
+              <i class="fa fa-map-marker mr-2" aria-hidden="true"></i>
+           </span>
+            <span>Address</span>
+          </ng-template>
+          <app-checkout-address></app-checkout-address>
+        </cdk-step>
+        <cdk-step>
+          <ng-template cdkStepLabel>
+           <span class="icon is-medium">
+              <i class="fa fa-plane mr-2" aria-hidden="true"></i>
+           </span>
+            <span>Delivery</span>
+          </ng-template>
+          <app-checkout-delivery></app-checkout-delivery>
+        </cdk-step>
+        <cdk-step>
+          <ng-template cdkStepLabel>
+           <span class="icon is-medium">
+              <i class="fa fa-quote-right mr-2" aria-hidden="true"></i>
+           </span>
+            <span>Review</span>
+          </ng-template>
+          <app-checkout-review></app-checkout-review>
+        </cdk-step>
+        <cdk-step>
+          <ng-template cdkStepLabel>
+           <span class="icon is-medium">
+              <i class="fa fa-credit-card mr-2" aria-hidden="true"></i>
+           </span>
+            <span>Payment</span>
+          </ng-template>
+          <app-checkout-payment></app-checkout-payment>
+        </cdk-step>
       </app-stepper>
     </div>
     <div class="col-md-4">
@@ -13,3 +45,6 @@
     </div>
   </div>
 </div>
+
+
+<!--https://indepth.dev/posts/1284/building-a-custom-stepper-using-angular-cdk-->

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Observable} from "rxjs";
 import {IBasket, IBasketItem} from "../../models/basket";
 import {BasketService} from "../../../basket/services/basket.service";
@@ -10,6 +10,8 @@ import {BasketService} from "../../../basket/services/basket.service";
 })
 export class BasketSummaryComponent implements OnInit {
   public basket$: Observable<IBasket | null>;
+  @Input()
+  public isBasket: boolean = true;
   @Output()
   increment: EventEmitter<IBasketItem> = new EventEmitter<IBasketItem>();
   @Output()

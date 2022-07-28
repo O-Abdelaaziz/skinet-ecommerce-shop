@@ -13,7 +13,7 @@
     <th scope="col" class="border-0">
       <div class="p-2 px-3 text-uppercase">Total</div>
     </th>
-    <th scope="col" class="border-0">
+    <th scope="col" class="border-0" *ngIf="isBasket">
       <div class="p-2 px-3 text-uppercase">Remove</div>
     </th>
   </tr>
@@ -36,12 +36,12 @@
     </th>
     <td class="align-middle text-center"><strong>{{item.price | currency}}</strong></td>
     <td class="align-middle text-center">
-      <i (click)="decrementItemQuantity(item)" class="fa fa-minus-circle text-primary mr-2" style="cursor: pointer; font-size: 2em;"></i>
+      <i *ngIf="isBasket" (click)="decrementItemQuantity(item)" class="fa fa-minus-circle text-primary mr-2" style="cursor: pointer; font-size: 2em;"></i>
       <span class="font-weight-bold" style="font-size: 1.5em;">{{item.quantity}}</span>
-      <i (click)="incrementItemQuantity(item)" class="fa fa-plus-circle text-success mx-2" style="cursor: pointer; font-size: 2em;"></i>
+      <i *ngIf="isBasket" (click)="incrementItemQuantity(item)" class="fa fa-plus-circle text-success mx-2" style="cursor: pointer; font-size: 2em;"></i>
     </td>
     <td class="align-middle text-center">{{(item.price * item.quantity) | currency}}</td>
-    <td class="align-middle text-center">
+    <td class="align-middle text-center" *ngIf="isBasket">
       <button (click)="removeBasketItem(item)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
     </td>
   </tr>

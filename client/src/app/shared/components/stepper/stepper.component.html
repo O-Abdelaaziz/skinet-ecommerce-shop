@@ -6,7 +6,7 @@
         <ng-container *ngIf="step.stepLabel; else showLabelText" [ngTemplateOutlet]="step.stepLabel.template">
         </ng-container>
         <ng-template #showLabelText>
-          {{ step.label }}
+          {{ step.label }}:{{step.completed}}
         </ng-template>
       </button>
     </li>

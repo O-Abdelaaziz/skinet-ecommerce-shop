@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8">
       <app-stepper [linearModeSelected]="false" #cdkStepper>
-        <cdk-step>
+        <cdk-step [completed]="(checkoutForm.get('addressForm')?.valid)">
           <ng-template cdkStepLabel>
            <span class="icon is-medium">
               <i class="fa fa-map-marker mr-2" aria-hidden="true"></i>
@@ -11,7 +11,7 @@
           </ng-template>
           <app-checkout-address [checkoutForm]="checkoutForm"></app-checkout-address>
         </cdk-step>
-        <cdk-step>
+        <cdk-step [completed]="(checkoutForm.get('deliveryForm')?.valid)">
           <ng-template cdkStepLabel>
            <span class="icon is-medium">
               <i class="fa fa-plane mr-2" aria-hidden="true"></i>
@@ -29,7 +29,7 @@
           </ng-template>
           <app-checkout-review></app-checkout-review>
         </cdk-step>
-        <cdk-step>
+        <cdk-step [completed]="(checkoutForm.get('paymentForm')?.valid)">
           <ng-template cdkStepLabel>
            <span class="icon is-medium">
               <i class="fa fa-credit-card mr-2" aria-hidden="true"></i>
@@ -45,6 +45,5 @@
     </div>
   </div>
 </div>
-
 
 <!--https://indepth.dev/posts/1284/building-a-custom-stepper-using-angular-cdk-->

@@ -12,13 +12,13 @@ export class CheckoutComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) {
     this.checkoutForm = new FormGroup({
       addressForm: new FormGroup({
-        firstName: new FormControl(''),
-        lastName: new FormControl(''),
-        country: new FormControl(''),
-        city: new FormControl(''),
-        state: new FormControl(''),
-        street: new FormControl(''),
-        zipCode: new FormControl(''),
+        firstName: new FormControl('',Validators.required),
+        lastName: new FormControl('',Validators.required),
+        country: new FormControl('',Validators.required),
+        city: new FormControl('',Validators.required),
+        state: new FormControl('',Validators.required),
+        street: new FormControl('',Validators.required),
+        zipCode: new FormControl('',Validators.required),
       }),
       deliveryForm: new FormGroup({
         deliveryMethod: new FormControl(''),

@@ -6,8 +6,9 @@
         <ng-container *ngIf="step.stepLabel; else showLabelText" [ngTemplateOutlet]="step.stepLabel.template">
         </ng-container>
         <ng-template #showLabelText>
-          {{ step.label }}:{{step.completed}}
+          {{ step.label }}
         </ng-template>
+        <i class="fa ml-2" [ngClass]="{'fa-check  text-success': step.completed == true,'fa-pencil text-warning': !step.completed && selectedIndex ===i}"></i>
       </button>
     </li>
   </ul>
@@ -15,3 +16,4 @@
     <ng-container [ngTemplateOutlet]="selected.content"></ng-container>
   </div>
 </div>
+<!--https://yonkieyo.com/angular-11-ngclass-in-condition/-->

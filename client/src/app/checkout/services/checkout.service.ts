@@ -3,6 +3,7 @@ import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {IDeliveryMethod} from "../../shared/models/DeliveryMethod";
 import {map} from "rxjs/operators";
+import {IOrderToCreate} from "../../shared/models/order";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,11 @@ export class CheckoutService {
   constructor(private _httpClient: HttpClient) {
   }
 
-  getDeliveryMethods() {
+  public creatOrder(order: IOrderToCreate) {
+    return this._httpClient.post(`${this.baseUrl}/orders`, order);
+  }
+
+  public getDeliveryMethods() {
     return this._httpClient.get<IDeliveryMethod[]>(`${this.baseUrl}/orders/deliveryMethods`).pipe(
       map((dm: IDeliveryMethod[]) => {
         return dm.sort((a, b) => b.price - a.price);

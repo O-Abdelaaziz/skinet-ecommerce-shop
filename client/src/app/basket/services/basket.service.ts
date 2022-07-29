@@ -104,6 +104,12 @@ export class BasketService {
     )
   }
 
+  public deleteLocalBasket(id: string) {
+    this.basketSource.next(null);
+    this.basketTotalSource.next(null);
+    localStorage.removeItem('basket_id');
+  }
+
   private mapProductItemToBasketItem(product: IProduct, quantity: number): IBasketItem {
     return {
       id: product.id,

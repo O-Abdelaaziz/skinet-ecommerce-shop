@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AccountService} from "../account/services/account.service";
 
 @Component({
   selector: 'app-checkout',
@@ -9,16 +10,16 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 export class CheckoutComponent implements OnInit {
   public checkoutForm: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private _accountService: AccountService, private _formBuilder: FormBuilder) {
     this.checkoutForm = new FormGroup({
       addressForm: new FormGroup({
-        firstName: new FormControl('',Validators.required),
-        lastName: new FormControl('',Validators.required),
-        country: new FormControl('',Validators.required),
-        city: new FormControl('',Validators.required),
-        state: new FormControl('',Validators.required),
-        street: new FormControl('',Validators.required),
-        zipCode: new FormControl('',Validators.required),
+        firstName: new FormControl(''),
+        lastName: new FormControl(''),
+        country: new FormControl(''),
+        city: new FormControl(''),
+        state: new FormControl(''),
+        street: new FormControl(''),
+        zipCode: new FormControl(''),
       }),
       deliveryForm: new FormGroup({
         deliveryMethod: new FormControl(''),
@@ -31,6 +32,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.createCheckoutForm();
+    this.getAddressFormValues();
   }
 
   public createCheckoutForm() {
@@ -53,4 +55,16 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
+  public getAddressFormValues() {
+    this._accountService.getUserAddress().subscribe(
+      (response) => {
+        if (response) {
+          this.checkoutForm.get('addressForm')?.patchValue(response);
+        }
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
 }

@@ -59,7 +59,7 @@ namespace API.Controllers
             //var email = User.FindFirstValue(ClaimTypes.Email);
             //var user = await _userManager.FindByEmailAsync(email);
 
-            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
+            var user = await _userManager.FindByUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
 
             return _mapper.Map<Address, AddressDto>(user.Address);
         }

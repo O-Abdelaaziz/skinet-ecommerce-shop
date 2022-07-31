@@ -26,6 +26,12 @@ const routes: Routes = [
     canActivate:[LoggedInGuard],
     data: {breadcrumb: {skip: true}}
   },
+  {
+    path: 'orders',
+    loadChildren: () => import('./orders/orders.module').then(o => o.OrdersModule),
+    canActivate:[AuthenticationGuard],
+    data: {breadcrumb: {skip: true}}
+  },
   {path: 'server-error', component: ServerErrorComponent, data: {breadcrumb: 'Server Error'}},
   {path: 'not-found', component: NotFoundComponent, data: {breadcrumb: 'Not Found'}},
   {path: '**', redirectTo: '/not-found', pathMatch: 'full'},

@@ -10,11 +10,11 @@
         {
             ProductItemId = productItemId;
             ProductName = productName;
-            PictureUrl  = productUrl;
+            ProductUrl = productUrl;
         }
 
         public int ProductItemId { get; set; }
         public string ProductName { get; set; }
-        public string PictureUrl  { get; set; }
+        public string ProductUrl { get; set; }
     }
 }

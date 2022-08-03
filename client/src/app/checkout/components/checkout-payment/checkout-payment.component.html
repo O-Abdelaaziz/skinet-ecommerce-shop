@@ -22,7 +22,8 @@
   <button class="btn btn-outline-primary" cdkStepperPrevious>
     <i class="fa fa-angle-double-left"></i> Back to review
   </button>
-  <button class="btn btn-outline-success" (click)="onSubmitOrder()">
+  <button [disabled]="loading" class="btn btn-outline-success" (click)="onSubmitOrder()">
     <i class="fa fa-check-square-o"></i> Submit order
+    <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
   </button>
 </div>

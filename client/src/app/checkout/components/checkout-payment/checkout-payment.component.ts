@@ -89,9 +89,23 @@ export class CheckoutPaymentComponent implements OnInit, OnDestroy {
       this._checkoutService.creatOrder(orderToCreate).subscribe(
         (response) => {
           this._angularNotifierService.showNotification(NotifierEnum.SUCCESS, 'Order created successfully');
-          this._basketService.deleteLocalBasket(basket?.id);
-          const navigationExtras: NavigationExtras = {state: response};
-          this._router.navigate(['checkout/success'], navigationExtras);
+          this.stripe.confirmCardPayment(basket.clientSecret, {
+            payment_method: {
+              card: this.cardNumber,
+              billing_details: {
+                name: this.checkoutForm.get('paymentForm')?.get('nameOnCard')?.value
+              }
+            }
+          }).then((result:any)=>{
+            if(result.paymentIntent){
+              this._basketService.deleteLocalBasket(basket?.id);
+              const navigationExtras: NavigationExtras = {state: response};
+              this._router.navigate(['checkout/success'], navigationExtras);
+            }else{
+              this._angularNotifierService.showNotification(NotifierEnum.ERROR, 'Payment Error!');
+            }
+          });
+
           console.log(response)
         },
         (error) => {

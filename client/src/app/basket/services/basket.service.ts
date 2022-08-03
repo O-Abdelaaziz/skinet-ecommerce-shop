@@ -149,6 +149,10 @@ export class BasketService {
 
   public setSetShippingPrice(deliveryMethod: IDeliveryMethod) {
     this.shipping = deliveryMethod.price;
+    const basket = this.getCurrentBasket();
+    basket!.deliveryMethodId = deliveryMethod.id;
+    basket!.shippingPrice = deliveryMethod.price;
     this.calculateTotals();
+    this.setBasket(basket!);
   }
 }

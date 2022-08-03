@@ -74,4 +74,11 @@ export class CheckoutComponent implements OnInit {
       }
     )
   }
+
+  getDeliveryMethodValue() {
+    const basket = this._basketService.getCurrentBasket();
+    if (basket!.deliveryMethodId !== null) {
+      this.checkoutForm?.get('deliveryForm')?.get('deliveryMethod')?.patchValue(basket!.deliveryMethodId!.toString());
+    }
+  }
 }

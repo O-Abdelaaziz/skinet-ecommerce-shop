@@ -3,6 +3,15 @@ import {getUniqueId} from "../helpers/UniqueIdGenerator";
 export interface IBasket {
   id: string;
   items: IBasketItem[];
+  clientSecret?: string;
+  paymentIntentId?: string;
+  deliveryMethodId?: number;
+  shippingPrice?: number;
+}
+
+export class Basket implements IBasket {
+  id: string = getUniqueId(4);
+  items: IBasketItem[] = [];
 }
 
 export interface IBasketItem {
@@ -13,11 +22,6 @@ export interface IBasketItem {
   pictureUrl: string;
   brand: string;
   type: string;
-}
-
-export class Basket implements IBasket {
-  id: string = getUniqueId(4);
-  items: IBasketItem[] = [];
 }
 
 export interface IBasketTotals {

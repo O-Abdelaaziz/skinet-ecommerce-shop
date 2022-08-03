@@ -6,7 +6,7 @@ import {AngularNotifierService, NotifierEnum} from "../../../core/services/angul
 import {IBasket} from "../../../shared/models/basket";
 import {NavigationExtras, Router} from "@angular/router";
 
-declare var Stripe:any;
+declare var Stripe: any;
 
 @Component({
   selector: 'app-checkout-payment',
@@ -45,7 +45,7 @@ export class CheckoutPaymentComponent implements OnInit, OnDestroy {
     this.cardCvc.destroy();
   }
 
-  onChange(event:any) {
+  onChange(event: any) {
     if (event.error) {
       this.cardErrors = event.error.message;
     } else {
@@ -82,36 +82,25 @@ export class CheckoutPaymentComponent implements OnInit, OnDestroy {
     this.cardCvc.addEventListener('change', this.cardHandler);
   }
 
-  onSubmitOrder() {
-    const basket = this._basketService.getCurrentBasket();
-    if (basket) {
-      const orderToCreate = this.getOrderToCreate(basket);
-      this._checkoutService.creatOrder(orderToCreate).subscribe(
-        (response) => {
-          this._angularNotifierService.showNotification(NotifierEnum.SUCCESS, 'Order created successfully');
-          this.stripe.confirmCardPayment(basket.clientSecret, {
-            payment_method: {
-              card: this.cardNumber,
-              billing_details: {
-                name: this.checkoutForm.get('paymentForm')?.get('nameOnCard')?.value
-              }
-            }
-          }).then((result:any)=>{
-            if(result.paymentIntent){
-              this._basketService.deleteLocalBasket(basket?.id);
-              const navigationExtras: NavigationExtras = {state: response};
-              this._router.navigate(['checkout/success'], navigationExtras);
-            }else{
-              this._angularNotifierService.showNotification(NotifierEnum.ERROR, 'Payment Error!');
-            }
-          });
+  async onSubmitOrder() {
+    this.loading = true;
+    const basket = this._basketService.getCurrentBasket() as IBasket;
+    try {
+      const createdOrder = await this.createOrder(basket);
+      const paymentResult = await this.confirmPaymentWithStripe(basket);
 
-          console.log(response)
-        },
-        (error) => {
-          this._angularNotifierService.showNotification(NotifierEnum.ERROR, error.message);
-        }
-      )
+      if (paymentResult.paymentIntent) {
+        this._angularNotifierService.showNotification(NotifierEnum.SUCCESS, 'Order created successfully');
+        this._basketService.deleteLocalBasket(basket?.id);
+        const navigationExtras: NavigationExtras = {state: createdOrder};
+        await this._router.navigate(['checkout/success'], navigationExtras);
+      } else {
+        this._angularNotifierService.showNotification(NotifierEnum.ERROR, 'Payment Error!');
+      }
+      this.loading = false;
+    } catch (error) {
+      console.log(error);
+      this.loading = false;
     }
   }
 
@@ -121,5 +110,21 @@ export class CheckoutPaymentComponent implements OnInit, OnDestroy {
       deliveryMethodId: +this.checkoutForm?.get('deliveryForm')?.get('deliveryMethod')?.value,
       shipToAddress: this.checkoutForm?.get('addressForm')?.value
     };
+  }
+
+  private async createOrder(basket: IBasket) {
+    const orderToCreate = this.getOrderToCreate(basket);
+    return this._checkoutService.creatOrder(orderToCreate).toPromise();
+  }
+
+  private async confirmPaymentWithStripe(basket: IBasket) {
+    return this.stripe.confirmCardPayment(basket.clientSecret, {
+      payment_method: {
+        card: this.cardNumber,
+        billing_details: {
+          name: this.checkoutForm.get('paymentForm')?.get('nameOnCard')?.value
+        }
+      }
+    });
   }
 }

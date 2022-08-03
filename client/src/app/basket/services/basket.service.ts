@@ -35,6 +35,7 @@ export class BasketService {
       .pipe(
         map((basket: IBasket) => {
           this.basketSource.next(basket);
+          this.shipping=basket.shippingPrice as number;
           this.calculateTotals();
         })
       );

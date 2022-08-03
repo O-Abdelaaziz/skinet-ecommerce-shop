@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EjEKSrf6gbNJ/N+L7TLb4GDphp5CPjo/wJa7oMB3Qvv4tpWou1vUPSWzN/jka46Aaz956xrYFzRExlmfpYIvgg==",
+  "dgSpecHash": "ucl18DiQMSlYGF3VxnJRJcKaf3Yxo4sVq70Jwx9jYyIks/d1nhCidWxFetN0sxJn4cq2pDxITlMRS5llvWXV/A==",
   "success": true,
   "projectFilePath": "C:\\Users\\aziz\\Desktop\\Angular Projects\\skinet-ecommerce-shop\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -56,8 +56,10 @@
     "C:\\Users\\aziz\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\mysql.data\\8.0.29\\mysql.data.8.0.29.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\mysql.entityframeworkcore\\5.0.13\\mysql.entityframeworkcore.5.0.13.nupkg.sha512",
+    "C:\\Users\\aziz\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.2\\pipelines.sockets.unofficial.2.2.2.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\stackexchange.redis\\2.6.48\\stackexchange.redis.2.6.48.nupkg.sha512",
+    "C:\\Users\\aziz\\.nuget\\packages\\stripe.net\\40.0.0\\stripe.net.40.0.0.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",

@@ -676,6 +676,15 @@
           "lib/netstandard2.1/MySql.EntityFrameworkCore.dll": {}
         }
       },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "Pipelines.Sockets.Unofficial/2.2.2": {
         "type": "package",
         "dependencies": {
@@ -699,6 +708,19 @@
         },
         "runtime": {
           "lib/net5.0/StackExchange.Redis.dll": {}
+        }
+      },
+      "Stripe.net/40.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "System.Configuration.ConfigurationManager": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Stripe.net.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Stripe.net.dll": {}
         }
       },
       "System.Buffers/4.5.1": {
@@ -1989,6 +2011,37 @@
         "mysql.entityframeworkcore.nuspec"
       ]
     },
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "Pipelines.Sockets.Unofficial/2.2.2": {
       "sha512": "Bhk0FWxH1paI+18zr1g5cTL+ebeuDcBCR+rRFO+fKEhretgjs7MF2Mc1P64FGLecWp4zKCUOPzngBNrqVyY7Zg==",
       "type": "package",
@@ -2031,6 +2084,29 @@
         "lib/netstandard2.0/StackExchange.Redis.xml",
         "stackexchange.redis.2.6.48.nupkg.sha512",
         "stackexchange.redis.nuspec"
+      ]
+    },
+    "Stripe.net/40.0.0": {
+      "sha512": "SD1bGiF+sVQG3p2LXNTZ5rEG2aCnXIHokcxYS9yyW3dR01J0ryf+iNFOwid148yePZ0gCBcRxj3wiW1mTmP7UQ==",
+      "type": "package",
+      "path": "stripe.net/40.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "icon.png",
+        "lib/net461/Stripe.net.dll",
+        "lib/net461/Stripe.net.xml",
+        "lib/net5.0/Stripe.net.dll",
+        "lib/net5.0/Stripe.net.xml",
+        "lib/net6.0/Stripe.net.dll",
+        "lib/net6.0/Stripe.net.xml",
+        "lib/netcoreapp3.1/Stripe.net.dll",
+        "lib/netcoreapp3.1/Stripe.net.xml",
+        "lib/netstandard2.0/Stripe.net.dll",
+        "lib/netstandard2.0/Stripe.net.xml",
+        "stripe.net.40.0.0.nupkg.sha512",
+        "stripe.net.nuspec"
       ]
     },
     "System.Buffers/4.5.1": {
@@ -2814,6 +2890,7 @@
       "Microsoft.IdentityModel.Tokens >= 6.21.0",
       "MySql.EntityFrameworkCore >= 5.0.13",
       "StackExchange.Redis >= 2.6.48",
+      "Stripe.net >= 40.0.0",
       "System.IdentityModel.Tokens.Jwt >= 6.21.0"
     ]
   },
@@ -2879,6 +2956,10 @@
           "StackExchange.Redis": {
             "target": "Package",
             "version": "[2.6.48, )"
+          },
+          "Stripe.net": {
+            "target": "Package",
+            "version": "[40.0.0, )"
           },
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",

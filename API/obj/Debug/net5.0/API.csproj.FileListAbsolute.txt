@@ -74,3 +74,5 @@ C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\obj\Debug\net5.
 C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\aziz\Desktop\Angular Projects\skinet-ecommerce-shop\API\bin\Debug\net5.0\Stripe.net.dll

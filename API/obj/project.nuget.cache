@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZEZ3ECeXkW2YKmTCTzq7TpjeCo13kYdBr/2r0l2919egiZDtehjNL7ESasUEEtxFO2uSd24S5IR5tILm9pmtHQ==",
+  "dgSpecHash": "A6YueubMo+4FliRLHwf1YjtZpC3VVyzSOIdCx65QE4T67TG1OD4nF9mt8g1xqwBx2UeAoUYh0+T730nrrBpBGw==",
   "success": true,
   "projectFilePath": "C:\\Users\\aziz\\Desktop\\Angular Projects\\skinet-ecommerce-shop\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -66,8 +66,10 @@
     "C:\\Users\\aziz\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\mysql.data\\8.0.29\\mysql.data.8.0.29.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\mysql.entityframeworkcore\\5.0.13\\mysql.entityframeworkcore.5.0.13.nupkg.sha512",
+    "C:\\Users\\aziz\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.2\\pipelines.sockets.unofficial.2.2.2.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\stackexchange.redis\\2.6.48\\stackexchange.redis.2.6.48.nupkg.sha512",
+    "C:\\Users\\aziz\\.nuget\\packages\\stripe.net\\40.0.0\\stripe.net.40.0.0.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
     "C:\\Users\\aziz\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",

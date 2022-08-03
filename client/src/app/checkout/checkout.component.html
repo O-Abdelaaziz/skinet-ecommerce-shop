@@ -27,7 +27,7 @@
            </span>
             <span>Review</span>
           </ng-template>
-          <app-checkout-review></app-checkout-review>
+          <app-checkout-review [appStepper]="cdkStepper"></app-checkout-review>
         </cdk-step>
         <cdk-step [completed]="(checkoutForm.get('paymentForm')?.valid)">
           <ng-template cdkStepLabel>

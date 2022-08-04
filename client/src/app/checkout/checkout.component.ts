@@ -23,7 +23,7 @@ export class CheckoutComponent implements OnInit {
         city: new FormControl(''),
         state: new FormControl(''),
         street: new FormControl(''),
-        zipCode: new FormControl(''),
+        zipCode	: new FormControl(''),
       }),
       deliveryForm: new FormGroup({
         deliveryMethod: new FormControl(''),

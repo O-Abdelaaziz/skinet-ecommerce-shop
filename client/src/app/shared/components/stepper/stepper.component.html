@@ -2,7 +2,7 @@
   <header><h2>Step {{selectedIndex + 1}}/{{steps.length}}</h2></header>
   <ul class="nav nav-pills nav-justified">
     <li class="nav-item" *ngFor="let step of steps; let i=index">
-      <button [class.active]="selectedIndex ===i" class="nav-link py-3 text-uppercase font-weight-bold btn-block" (click)="onClick(i)">
+      <button [disabled]="true" [class.active]="selectedIndex ===i" class="nav-link py-3 text-uppercase font-weight-bold btn-block" (click)="onClick(i)">
         <ng-container *ngIf="step.stepLabel; else showLabelText" [ngTemplateOutlet]="step.stepLabel.template">
         </ng-container>
         <ng-template #showLabelText>

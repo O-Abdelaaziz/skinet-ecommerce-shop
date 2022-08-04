@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-8">
-      <app-stepper [linearModeSelected]="false" #cdkStepper>
+      <app-stepper [linearModeSelected]="true" #cdkStepper>
         <cdk-step [completed]="(checkoutForm.get('addressForm')?.valid)">
           <ng-template cdkStepLabel>
            <span class="icon is-medium">

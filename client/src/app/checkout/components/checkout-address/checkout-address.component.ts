@@ -22,6 +22,7 @@ export class CheckoutAddressComponent implements OnInit {
     this._accountService.updateUserAddress(this.checkoutForm.get('addressForm')?.value).subscribe(
       (response) => {
         this._angularNotifierService.showNotification(NotifierEnum.SUCCESS, 'Address saved successfully');
+        this.checkoutForm.get('deliveryForm')?.reset(response);
       },
       (error) => {
         console.log(error);

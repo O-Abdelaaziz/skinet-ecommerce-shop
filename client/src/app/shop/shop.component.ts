@@ -17,7 +17,7 @@ export class ShopComponent implements OnInit {
   public types: IType[] = [];
 
   public shopParams: ShopParams;
-  public totalCount: number| undefined;
+  public totalCount: number | undefined;
   public sortOptions = [
     {name: 'Alphabetical', value: 'name'},
     {name: 'Price Low to High', value: 'priceAsc'},
@@ -35,13 +35,13 @@ export class ShopComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getProducts(true);
     this.getBrands();
     this.getTypes();
   }
 
-  public getProducts() {
-    this._shopService.getProductsList().subscribe(
+  public getProducts(useCache = false) {
+    this._shopService.getProductsList(useCache).subscribe(
       response => {
         this.products = response.data;
         this.totalCount = response.count;
@@ -69,7 +69,7 @@ export class ShopComponent implements OnInit {
   }
 
   public onBrandSelected(brandId: number) {
-    const params=this._shopService.shopParams;
+    const params = this._shopService.shopParams;
     params.brandId = brandId;
     params.pageNumber = 1;
     this._shopService.setShopParams(params);
@@ -77,7 +77,7 @@ export class ShopComponent implements OnInit {
   }
 
   public onTypeSelected(typeId: number) {
-    const params=this._shopService.shopParams;
+    const params = this._shopService.shopParams;
     params.typeId = typeId;
     params.pageNumber = 1;
     this._shopService.setShopParams(params);
@@ -85,23 +85,23 @@ export class ShopComponent implements OnInit {
   }
 
   onSortSelected(event: Event) {
-    const params=this._shopService.shopParams;
+    const params = this._shopService.shopParams;
     params.sort = (event.target as HTMLInputElement).value;
     this._shopService.setShopParams(params);
     this.getProducts();
   }
 
   onPageChange(event: any) {
-    if (this.shopParams.pageNumber !== event) {
-      const params=this._shopService.shopParams;
+    const params = this._shopService.shopParams;
+    if (params.pageNumber !== event) {
       params.pageNumber = event;
       this._shopService.setShopParams(params);
-      this.getProducts();
+      this.getProducts(true);
     }
   }
 
   onPageSizeChange(event: any): void {
-    const params=this._shopService.shopParams;
+    const params = this._shopService.shopParams;
     params.pageSize = event.target.value;
     params.pageNumber = 1;
     this._shopService.setShopParams(params);
@@ -109,7 +109,7 @@ export class ShopComponent implements OnInit {
   }
 
   onSearch() {
-    const params=this._shopService.shopParams;
+    const params = this._shopService.shopParams;
     params.search = this.keyword.nativeElement.value;
     params.pageNumber = 1;
     this._shopService.setShopParams(params);

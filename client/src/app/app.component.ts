@@ -14,6 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 })
 export class AppComponent implements OnInit {
   public reachedTheEnd: boolean = false;
+  public title = '';
 
   constructor(
     private _decimalPipe: DecimalPipe,
@@ -42,7 +43,7 @@ export class AppComponent implements OnInit {
   }
 
   private loadCurrentUser() {
-    const token = localStorage.getItem('token') as string ;
+    const token = localStorage.getItem('token') as string;
     // const token= JSON.parse(localStorage.getItem('token')!) || {};
     this._accountService.loadCurrentUser(token)?.subscribe(
       () => {

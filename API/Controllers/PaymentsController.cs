@@ -20,7 +20,7 @@ namespace API.Controllers
 
         private readonly string _whSecret;
 
-        public PaymentsController(IPaymentService paymentService, ILogger<PaymentsController> loggers)
+        public PaymentsController(IPaymentService paymentService, ILogger<PaymentsController> logger)
         {
             _paymentService = paymentService;
             _logger = logger;
